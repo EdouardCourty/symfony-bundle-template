@@ -1,7 +1,9 @@
-vendor
-.idea
+/vendor/
+/composer.lock
+/.idea/
 .DS_Store
-composer.lock
-tests/App/var
-.php-cs-fixer.cache
+/.php-cs-fixer.cache
+/.phpunit.cache/
 .phpunit.result.cache
+/tests/App/var/
+/tests/App/config/reference.php

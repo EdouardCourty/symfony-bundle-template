@@ -3,3 +3,6 @@ parameters:
 	paths:
 		- src
 		- tests
+	excludePaths:
+		- tests/App/var/* (?)
+		- tests/App/config/reference.php (?)
