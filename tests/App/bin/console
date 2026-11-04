@@ -1,11 +1,18 @@
 #!/usr/bin/env php
 <?php
 
-use Ecourty\PlatformParameterBundle\Tests\App\TestKernel;
+declare(strict_types=1);
+
+use Ecourty\TemplateBundle\Tests\App\TestKernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArgvInput;
 
-require_once dirname(__DIR__, 3).'/vendor/autoload.php';
+require \dirname(__DIR__, 3) . '/vendor/autoload.php';
 
-$kernel = new TestKernel('test', true);
+$input = new ArgvInput();
+$env = $input->getParameterOption(['--env', '-e'], $_SERVER['APP_ENV'] ?? 'test');
+$debug = (bool) ($_SERVER['APP_DEBUG'] ?? ('prod' !== $env));
+
+$kernel = new TestKernel($env, $debug);
 $application = new Application($kernel);
-$application->run();
+$application->run($input);

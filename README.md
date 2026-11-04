@@ -1,59 +1,90 @@
 # Template Bundle
 
+[![CI](https://github.com/EdouardCourty/template-bundle/actions/workflows/ci.yml/badge.svg)](https://github.com/EdouardCourty/template-bundle/actions/workflows/ci.yml)
+
 A Symfony bundle template for rapid bundle development.
+
+> Replace this description, the badge URL and the `template` / `Template` names with your bundle's own.
+
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Core Features](#core-features)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Development](#development)
+- [License](#license)
+
+---
 
 ## Requirements
 
-- PHP 8.3+
-- Symfony 7.0+
+- PHP **≥ 8.3**
+- Symfony **≥ 7.0**
+
+---
 
 ## Installation
 
 ```bash
+composer require ecourty/template-bundle
+```
+
+Register the bundle in `config/bundles.php` (done automatically with Symfony Flex when a recipe exists):
+
+```php
+return [
+    // ...
+    Ecourty\TemplateBundle\TemplateBundle::class => ['all' => true],
+];
+```
+
+---
+
+## Core Features
+
+- **Feature name** — short description.
+
+---
+
+## Configuration
+
+```yaml
+# config/packages/template.yaml
+template: ~
+```
+
+---
+
+## Usage
+
+Describe how to use the bundle here.
+
+---
+
+## Development
+
+For AI-assisted development and architecture guidelines, see [AGENTS.md](AGENTS.md).
+
+```bash
 composer install
-```
 
-## Getting Started
-
-For AI-assisted development and project setup guidance, see [AGENTS.md](AGENTS.md). This file contains:
-- First launch instructions
-- Architecture overview and design patterns
-- Development guidelines and best practices
-- Testing strategies
-
-## Development Tools
-
-This template comes with essential development tools pre-configured:
-
-- **PHPUnit 12**: Testing framework with Unit, Integration, and Functional test suites
-- **PHPStan 2**: Static analysis for code quality
-- **PHP CS Fixer 3**: Code style fixing and checking
-
-## Testing
-
-The bundle includes a test kernel (`TestKernel`) for functional and integration testing.
-
-Run all tests:
-```bash
-composer test
-```
-
-Run specific test suites:
-```bash
+composer test               # All tests
 composer test-unit          # Unit tests only
-composer test-integration   # Integration tests
-composer test-functional    # Functional tests
+composer test-integration   # Integration tests only
+composer test-functional    # Functional tests only
+
+composer phpstan            # Static analysis
+composer cs-check           # Check code style
+composer cs-fix             # Fix code style
+composer qa                 # phpstan + cs-check + test
 ```
 
-## Quality Assurance
+The functional and integration tests boot a minimal kernel located in `tests/App/TestKernel.php`.
 
-```bash
-composer phpstan    # Static analysis
-composer cs-check   # Check code style
-composer cs-fix     # Fix code style
-composer qa         # Run all QA checks
-```
+---
 
 ## License
 
-MIT
+This bundle is released under the [MIT License](LICENSE).

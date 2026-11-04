@@ -2,6 +2,8 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->exclude('vendor')
+    ->exclude('App/var')
+    ->notPath('App/config/reference.php')
     ->in(__DIR__ . '/src')
     ->in(__DIR__ . '/tests');
 
@@ -11,6 +13,7 @@ return $config
     ->setFinder($finder)
     ->setUsingCache(false)
     ->setRiskyAllowed(true)
+    ->setUnsupportedPhpVersionAllowed(true)
     ->setRules([
         '@PSR12' => true,
         '@Symfony' => true,
@@ -28,6 +31,5 @@ return $config
         'visibility_required' => true,
         'native_function_invocation' => true,
         'native_constant_invocation' => true,
-        'mb_str_functions' => false, // Disabled: we handle binary data (sodium keys) that requires strlen() not mb_strlen()
         'modernize_strpos' => true,
     ]);
